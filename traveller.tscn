@@ -1,0 +1,97 @@
+[gd_scene load_steps=15 format=3 uid="uid://vk7231wehrqs"]
+
+[ext_resource type="Script" path="res://traveller.gd" id="1_rxn0g"]
+[ext_resource type="Texture2D" uid="uid://d3y8re4yd15wx" path="res://idle.png" id="2_pq3b2"]
+[ext_resource type="Texture2D" uid="uid://d3oo8x8qe8fwy" path="res://walk.png" id="3_7c1sg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isoni"]
+atlas = ExtResource("2_pq3b2")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1vrd"]
+atlas = ExtResource("2_pq3b2")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nigvu"]
+atlas = ExtResource("2_pq3b2")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7l4l"]
+atlas = ExtResource("2_pq3b2")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26faw"]
+atlas = ExtResource("3_7c1sg")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnwba"]
+atlas = ExtResource("3_7c1sg")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7wji"]
+atlas = ExtResource("3_7c1sg")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmfv8"]
+atlas = ExtResource("3_7c1sg")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6m1oq"]
+atlas = ExtResource("3_7c1sg")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i5d2w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isoni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1vrd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nigvu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7l4l")
+}],
+"loop": true,
+"name": &"idle-traveller",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26faw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnwba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7wji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmfv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6m1oq")
+}],
+"loop": true,
+"name": &"walking-traveller",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4n2rw"]
+radius = 20.025
+
+[node name="traveller" type="CharacterBody2D"]
+script = ExtResource("1_rxn0g")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(33, 32)
+sprite_frames = SubResource("SpriteFrames_i5d2w")
+animation = &"walking-traveller"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(32, 35)
+shape = SubResource("CircleShape2D_4n2rw")
